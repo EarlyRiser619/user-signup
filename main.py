@@ -16,6 +16,7 @@ def filled_form():
     name_error=''
     pass_error=''
     ver_error=''
+    email=''
 
     name = request.form['name']
 
@@ -32,13 +33,14 @@ def filled_form():
     if (not password) or (password.strip() == '') or(verify_password != password):
         ver_error = "Passwords do not match"
     
-    e-mail = request.form['e-mail']
+    email = request.form['email']
 
-    if not('@' in e-mail) or not('.' in e-mail) or (' ' in e-mail):
+    if not('@' in email) or not('.' in email) or (' ' in email):
         mail_error = "Please use proper e-mail format"
+
     
-    if name_error or pass_error or ver_error:
-        return render_template("index.html", user_name=name, email_addy=e-mail, name_error=name_error, pass_error=pass_error, ver_error=ver_error, mail_error=mail_error)
+    if name_error or pass_error or ver_error or mail_error:
+        return render_template("index.html", user_name=name, email_addy=email, name_error=name_error, pass_error=pass_error, ver_error=ver_error, mail_error=mail_error)
     else:
         return render_template("welcome.html", username=name)
     
