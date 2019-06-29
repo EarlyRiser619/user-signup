@@ -16,7 +16,7 @@ def filled_form():
     name_error=''
     pass_error=''
     ver_error=''
-    email=''
+    mail_error=''
 
     name = request.form['name']
 
@@ -35,7 +35,7 @@ def filled_form():
     
     email = request.form['email']
 
-    if not('@' in email) or not('.' in email) or (' ' in email):
+    if email and (not('@' in email) or not('.' in email) or (' ' in email)):
         mail_error = "Please use proper e-mail format"
 
     
@@ -43,6 +43,6 @@ def filled_form():
         return render_template("index.html", user_name=name, email_addy=email, name_error=name_error, pass_error=pass_error, ver_error=ver_error, mail_error=mail_error)
     else:
         return render_template("welcome.html", username=name)
-    
+    ()
 
 app.run()
